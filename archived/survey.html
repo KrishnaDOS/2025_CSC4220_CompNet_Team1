@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="We are the Spring 2025 Computer Networks 
+        Team 1! Come visit us at https://www.compnet2025.com/">
+        <link rel="stylesheet" href="akagro.css">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <title>Computer Networks Team 1 Spring 2025</title>
+        <script src="./jquery/jquery-3.7.1.min.js"></script>
+        <script>
+            const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+            // Get other info from user
+            function getInfo() {
+                // Variable
+                var other;
+
+                // Prompt user to enter information when checkbox is selected
+                other = prompt("Please enter a brief description of why you like us. No more than 250 characters.");
+
+                return true;
+            }
+
+            // Form handling
+            function validateSurveyForm() {
+                // Display a message and prevent form from submitting if the
+                // user hasn't entered their name or agreed to submit anonymously
+                if (document.forms[0].surveyForm_textBox.value == "" && document.forms[0].getElementById("surveyForm_checkBoxA").checked == false) {
+                    alert("Please enter your legal full name, or check the box to send the form anonymously.");
+                    return false;
+                }
+
+                return true;
+            }
+
+            // JavaScript to go back
+            function goBack() {
+                window.history.back();
+            }
+
+            
+
+        const repeatedGreetings = async () => {
+            await sleep(1000)
+            //console.log("First")
+            //await sleep(1000)
+            //console.log("Second")
+            //await sleep(1000)
+            //console.log("Third")
+        };
+
+        //repeatedGreetings();
+
+        const showTime = async() => {
+            while (true) {
+                //console.log("Value of i: " + i);
+                $.get("./timestampAjax.php", { "cmd": "time" }, function (data) {
+                    $("#timestamp").html(data);
+                });
+                await sleep(1000);
+            }
+            return (false);
+        };
+
+        </script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <!--Back To Top-->
+            <div id="backToTop"></div>
+            <!--Company Logo-->
+            <header>
+                <a href="index.html"><div id="companyLogo"></div></a>
+            </header>
+            <!--Primary Navigation-->
+            <nav>
+                <ul>
+                    <li id="home"><a href="index.html">Home</a></li>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="support.php">Support</a></li>
+                <li><a href="aboutus.php">About Us</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li id="timestamp"><script>showTime();</script></li>
+                </ul>  
+            </nav>
+            <!--Page Content-->
+            <main>
+                <!--Skip To Content Fragment Identifier-->
+                <a class="skipToContent" href="#skipToContent">&darr; Skip to Content &darr;</a>
+                <!--Go to Previous Page-->
+                <button id="goBack" style="display: inline;" onclick="goBack()">Return to Previous Page</button>
+                <!--Skip To Content-->
+                <div id="skipToContent"></div>
+                <h1>RateUs Survey</h1>
+                <p>
+                    Feel free to give your opinion about us through this form.&nbsp;You 
+                    may submit this survey with your legal full name or anonymously.
+                </p>
+                <p style="font-style: italic;"> 
+                        Please note:&nbsp;This is not a support form.&nbsp;
+                        Visit our <a href="support.php">Support page</a> to submit a concern.
+                </p>
+                <p class="required">
+                    All required fields are marked with an asterick (*).
+                </p>
+                <form action="surveysubmit.html" method="POST" name="surveyForm" id="surveyForm" onsubmit="return validateSurveyForm()">
+                    <div>
+                        <label for="surveyForm_textBox">Full Name:&nbsp;</label>
+                        <input type="text" name="surveyForm_textBox" id="surveyForm_textBox" placeholder="Your legal full name" tabindex="0"> OR
+                        <input type="checkbox" name="surveyForm_checkBoxA" id="surveyForm_checkBoxA" tabindex="1" style="display: inline;">
+                        I choose to submit this form anonymously.
+                    </div>
+                    <div>
+                        <label for="surveyForm_range">Rate us from 1 to 10:&nbsp;</label>
+                        <input type="range" name="surveyForm_range" id="surveyForm_range" required="required" tabindex="1">
+                        1 &nbsp; &nbsp; &nbsp; &VeryThinSpace; &ZeroWidthSpace; 5 &nbsp; &nbsp; &nbsp; &VeryThinSpace; 10
+                    </div>
+                    <div>
+                        <label><span class="required">*</span> What impressed you about our business?&nbsp; <br> <span style="font-style: italic;">Select as many as needed:</span></label>
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox" tabindex="1" style="display: inline;">
+                        Our Products <br>
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox" tabindex="1" style="display: inline;">
+                        Quality Information <br>
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox0" tabindex="1" style="display: inline;">
+                        Support / Customer Service <br>
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox0" tabindex="1" style="display: inline;">
+                        Website Setup and Maintenence <br>
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox1" tabindex="1" style="display: inline;" onclick="return getInfo();">
+                        Other <br>
+                    </div> <br>
+                    <div>
+                        <label><span class="required">*</span> How likely would you recommend us to a friend?&nbsp; <br> <span style="font-style: italic;">Select one only:</span></label>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio" tabindex="1" style="display: inline;">
+                        Definitely <br>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio" tabindex="1" style="display: inline;">
+                        Most Likely <br>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio0" tabindex="1" style="display: inline;">
+                        Probably <br>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio0" tabindex="1" style="display: inline;">
+                        Unlikely <br>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio0" tabindex="1" style="display: inline;">
+                        Definitely Not <br>
+                        <input type="radio" name="surveyForm_radio" id="surveyForm_radio0" tabindex="1" style="display: inline;">
+                        Honestly, I don't know. <br>
+                    </div>
+                    <div>
+                        <label for="surveyForm_commentBox">General comments:&nbsp;</label>
+                        <textarea name="surveyForm_commentBox" id="surveyForm_commentBox" cols="60" rows="3" maxlength="250" tabindex="1" placeholder="Please provide your general comments here. No more than 250 characters."></textarea>
+                        <label for="surveyForm_commentBox">What can we possibly do better?&nbsp;</label>
+                        <textarea name="surveyForm_commentBox" id="surveyForm_commentBox" cols="60" rows="3" maxlength="250" tabindex="1" placeholder="Please provide some of your points on how we can do better. No more than 250 characters."></textarea>
+                    </div>
+                    <div id="checkBox">
+                        <input type="checkbox" name="surveyForm_checkBox" id="surveyForm_checkBox" tabindex="1" required="required" style="display: inline;">
+                        <span class="required">*</span> I agree to the <a href="policy.html">Privacy Policy</a> by submitting this form.
+                    </div>
+                    <input type="reset" name="surveyForm_submitForm" id="surveyForm_resetForm" value="Reset Form" tabindex="1">
+                    <input type="submit" name="surveyForm_submitForm" id="surveyForm_submitForm" value="Submit Survey" tabindex="1"> <br>
+                </form>
+                <!--Back To Top Fragment Identifier-->
+                <a class="backToTop" href="#backToTop">&uarr; Back To Top &uarr;</a>
+            </main>
+            <!--Copyright & Secondary Navigation-->
+            <footer>
+            <div class="desktop">&nbsp; <br></div>
+			<a href="sitedesc.php">Site Description</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="policy.html">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="sitemap.html">Site Map</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="survey.html">RateUs Survey</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <div></div>
+            <div class="mobile">Call <a href="tel:800-000-0000">1-800-COMP-NET</a></div><br class="desktop"><br
+                class="mobile">
+            <div id="copyright">Copyright &copy; 2025 Computer Networks Team 1, Inc.&nbsp;All rights reserved.</div>
+            <div id="desktop">&nbsp; <br></div>
+        </footer>
+        </div>
+    </body>
+</html>

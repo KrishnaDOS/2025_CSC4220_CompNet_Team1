@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="We are the Spring 2025 Computer Networks 
+    Team 1! Come visit us at https://www.compnet2025.com/">
+    <link rel="stylesheet" href="akagro.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Computer Networks Team 1 Spring 2025</title>
+    <script src="./jquery/jquery-3.7.1.min.js"></script>
+    <script>
+        const sleep = (delay) => new Promise((resolve) => setTimeout(resolve, delay));
+        // JavaScript to go back
+        function goBack() {
+            window.history.back();
+        }
+
+        function displaySubmitMessage() {
+            alert("You have successfully posted you question/comment. It will be verified by the moderator before publishing.");
+            return true;
+        }
+
+        const repeatedGreetings = async () => {
+            await sleep(1000)
+            //console.log("First")
+            //await sleep(1000)
+            //console.log("Second")
+            //await sleep(1000)
+            //console.log("Third")
+        };
+
+        //repeatedGreetings();
+
+        const showTime = async() => {
+            while (true) {
+                //console.log("Value of i: " + i);
+                $.get("./timestampAjax.php", { "cmd": "time" }, function (data) {
+                    $("#timestamp").html(data);
+                });
+                await sleep(1000);
+            }
+            return (false);
+        };
+
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!--Back To Top-->
+        <div id="backToTop"></div>
+        <!--Company Logo-->
+        <header>
+            <a href="index.html">
+                <div id="companyLogo"></div>
+            </a>
+        </header>
+        <!--Primary Navigation-->
+        <nav>
+            <ul>
+                <li id="home"><a href="index.html">Home</a></li>
+                <li><a href="products.php">Products</a></li>
+                <li><a href="agroblog.html">AgroBlog</a></li>
+                <li><a href="faqs.html">FAQs</a></li>
+                <li><a href="support.php">Support</a></li>
+                <li><a href="aboutus.php">About Us</a></li>
+                <li><a href="login.php">Login</a></li>
+                <li id="timestamp"><script>showTime();</script></li>
+            </ul>
+        </nav>
+        <!--Page Content-->
+        <main>
+            <!--Skip To Content Fragment Identifier-->
+            <a class="skipToContent" href="#skipToContent">&darr; Skip to Content &darr;</a>
+            <!--Go to Previous Page-->
+            <button id="goBack" style="display: inline;" onclick="goBack()">Return to Previous Page</button>
+            <!--Skip To Content-->
+            <div id="skipToContent"></div>
+            <h1>AgroBlog</h1>
+            <form action="" method="POST" name="AgroBlogpost" id="AgroBlogpost"
+                onsubmit="return displaySubmitMessage();">
+                <div id="article">
+                    <fieldset class="blogpost">
+                        <legend>Our New Product Releases!</legend>
+                        <p>
+                            Hello everyone! Today, we are announcing our all-new product releases!
+                            Our new products that are expected to be selling by May 1st,&nbsp;2024 are given in the
+                            below table:
+                        <table border="1" style="border: black solid 1px;">
+                            <caption style="font-style: italic; font-weight: bold;">May 1st - New Releases Update
+                            </caption>
+                            <tr style="text-align: center;">
+                                <th>Manufacturer</th>
+                                <th>Product</th>
+                                <th>Preview</th>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;Graham Spray Equipment &reg;&nbsp;</td>
+                                <td>GSE 200-Gallon Poly Unit Sprayer</td>
+                                <td><a href="images/sprayer2.jpg">sprayer2.jpg</a></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;Arcadia Technologies PVT LTD &reg;&nbsp;</td>
+                                <td>Attachable Agricultural Plough</td>
+                                <td><a href="images/plough1.jpg">plough1.jpg</a></td>
+                            </tr>
+                            <tr>
+                                <td>&nbsp;Yucheng Dadi Machinery Co., LTD &reg;&nbsp;</td>
+                                <td>Attachable Agricultural Plough</td>
+                                <td><a href="images/plough2.jpg">plough2.jpg</a></td>
+                            </tr>
+                        </table><br>
+                        Our first new product coming in is the GSE 200-Gallon Poly Unit Sprayer!
+                        It has a tank capacity of 200 gallons, as you can tell from the name,
+                        and has a hose length of 400 feet! That is a long, long hose indeed!<br>
+                        Next is our first of two types of ploughs, manufatured by Arcadia
+                        Technologies. It's been tested to have a longer functional life than other
+                        ploughs. Also another plough coming from manufacturer Yucheng Dadi Machinery Co., LTD
+                        that will be available for pre-order on April 15th, 2024.
+                        </p>
+                        <span style="font-size: medium; font-style: italic;">Posted by:&nbsp;Avyuktkrishna Ramasamy on
+                            04/07/2024 at 4:41 PM EST US</span><br>
+                        <hr style="border: black solid 1px;">
+                        <p>Comments:</p>
+                        <div id="replies">
+                            <p>
+                                "Oh great! I am eagery waiting for the sprayer to be available." -
+                                <span style="font-size: medium; font-style: italic;">&nbsp;AGr8_Farmer1001 on 04/08/2024
+                                    at 6:11 AM IST IN&nbsp;</span><br>
+                                <input type="button" value="Reply">
+                            </p>
+                            <p>
+                                "What a surprise! I didn't know there would be a sprayer that would have a 400 ft. hose
+                                length." -
+                                <span style="font-size: medium; font-style: italic;">&nbsp;John A. Doe Jr. on 04/18/2024
+                                    at 3:31 PST US&nbsp;</span><br>
+                                <input type="button" value="Reply">
+                            </p>
+                        </div>
+                        <input type="button" value="Comment" style="padding-right: 15px; padding-left: 15px;">
+                    </fieldset>
+                </div><br><br>
+                <div class="blogpost">
+                    <p>Comment on "Our New Product Releases!"</p>
+                    <span class="required">All required fields are marked with an asterick (*).</span>
+                    <div>
+                        <label for="textControlsBox"><span class="required">*</span> Post Title:&nbsp;</label>
+                        <input name="textControlsBox" id="textControlsBox" type="text"
+                            value="CMT: Our New Product Releases!" required="required" style="display: inline;"
+                            size="25">
+                    </div>
+                    <div>
+                        <input name="textControls" id="textControls" type="button" value="B"
+                            style="font-weight: bold; display: inline;">
+                        <input name="textControls" id="textControls" type="button" value="I"
+                            style="font-style: italic; display: inline;">
+                        <input name="textControls" id="textControls" type="button" value="U"
+                            style="text-decoration: underline; display: inline;">
+                        <input name="textControls" id="textControls" type="button" value="S"
+                            style="text-decoration: line-through; display: inline;">
+                        <select name="AgroBlogpost_fontDropDown" id="AgroBlogpost_fontDropDown" size="1"
+                            style="display: inline;">
+                            <option selected="selected" tabindex="1"
+                                style="font-family: 'Times New Roman', Times, serif;">Times New Roman</option>
+                            <option tabindex="1" style="font-family: Arial, Helvetica, sans-serif;">Arial</option>
+                            <option tabindex="1"
+                                style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">
+                                Gill Sans</option>
+                            <option tabindex="1" style="font-family: 'Courier New', Courier, monospace;">Courier New
+                            </option>
+                        </select>
+                        <input name="textControls" type="number" value="11" min="8" max="72"
+                            style="display: inline; background-color: rgb(243, 242, 242); border: grey solid 1px; border-radius: 2px; padding: 2px;">
+                    </div>
+                    <div>
+                        <br> <span class="required">*</span> Message:&nbsp;
+                        <textarea name="messageBox" id="messageBox" rows="5" cols="50" maxlength="250"
+                            placeholder="Enter your comment post. Not more than 250 characters."
+                            required="required"></textarea>
+                    </div>
+                    <input type="submit">
+                </div> <br>
+            </form>
+            <!--Back To Top Fragment Identifier-->
+            <a class="backToTop" href="#backToTop">&uarr; Back To Top &uarr;</a>
+        </main>
+        <!--Copyright & Secondary Navigation-->
+        <footer>
+            <div class="desktop">&nbsp; <br></div>
+			<a href="sitedesc.php">Site Description</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+			<a href="checklist.php">Checklist</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="policy.html">Privacy Policy</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="sitemap.html">Site Map</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <a href="survey.html">RateUs Survey</a> &nbsp;&nbsp;&nbsp;&nbsp;<br class="mobile">
+            <div></div>
+            <div class="mobile">Call <a href="tel:800-000-0000">1-800-COMP-NET</a></div><br class="desktop"><br
+                class="mobile">
+            <div id="copyright">Copyright &copy; 2025 Computer Networks Team 1, Inc.&nbsp;All rights reserved.</div>
+            <div id="desktop">&nbsp; <br></div>
+        </footer>
+    </div>
+</body>
+
+</html>
