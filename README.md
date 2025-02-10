@@ -5,7 +5,7 @@ Our website is made up of an Ionos domain & AWS EC2 VM.
 The Ionos domain is compnet2025.com accessable with https://www.compnet2025.com or my email us as Groupmembername@mail.compnet2025.com!
 The webserver is https secured and has a secured firewall to prevent access from unknown IPs to the ssh console as well as utilizing Public/Private key encryption for access.
 We set up our DNS manually as well as the mailserver. Unfortunately due to the free nature of our AWS instance we cannot enable mail sending as AWS blocks port 25 to prevent spam. If this were a real-world machine we would be able to instantly gain that capability if we were to switch to a paid version of the EC2 machine. 
-
+``` bash
 DNS records
 name	class	type	data	time to live
 www.compnet2025.com	IN	A	44.202.251.70	3600s	(01:00:00)
@@ -39,3 +39,4 @@ refresh:	7200
 retry:	900
 expire:	1209600
 minimum ttl:	86400
+```
