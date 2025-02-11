@@ -2,7 +2,7 @@
 CSC 4220 Computer Networks Team #1 Spring 2025
 Our website is made up of an Ionos domain & AWS EC2 VM.
 
-The Ionos domain is compnet2025.com accessable with https://www.compnet2025.com or my email us as *Groupmembername*@mail.compnet2025.com!
+The Ionos domain is compnet2025.com accessable with https://www.compnet2025.com or email us as *Groupmembername*@mail.compnet2025.com!
 
 The webserver is https secured and has a secured firewall to prevent access from unknown IPs to the ssh console as well as utilizing Public/Private key encryption for access.
 
