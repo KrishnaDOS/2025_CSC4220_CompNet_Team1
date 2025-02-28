@@ -6,69 +6,121 @@
     <title>Computer Networks 2025 Project 1</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #111111;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
         }
         header {
-            background: linear-gradient(90deg, #181818, #181818);
-            color: white;
-            padding: 10px 0;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            padding: 20px 0;
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 28px;
+            font-weight: 600;
+        }
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .header-buttons .button {
+            background-color: #6200ee;
+            border: none;
+            color: #ffffff;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 0; /* Square edges */
+            transition: background-color 0.3s ease;
+        }
+        .header-buttons .button:hover {
+            background-color: #3700b3;
         }
         nav {
             display: flex;
-            justify-content: center;
-            background-color: #333;
+            justify-content: left;
+            background-color: #1e1e1e;
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
         nav a {
-            color: white;
+            color: #bb86fc;
             padding: 14px 20px;
             text-decoration: none;
             text-align: center;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         nav a:hover {
-            background-color: #575757;
+            background-color: #333;
         }
         .container {
             padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 0; /* Square edges */
+            width: 300px;
+            text-align: center;
+        }
+        .card h2 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+        .card p {
+            color: #e0e0e0;
+            font-size: 16px;
+            margin-bottom: 20px;
         }
         .button {
-            background-color: #233b25;
+            background-color: #6200ee;
             border: none;
-            color: white;
-            padding: 15px 32px;
+            color: #ffffff;
+            padding: 12px 24px;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
-            margin: 4px 2px;
+            font-weight: 500;
             cursor: pointer;
-            border-radius: 12px;
+            border-radius: 0; /* Square edges */
+            transition: background-color 0.3s ease;
         }
         .button:hover {
-            background-color: #45a04927;
-        }
-        .card {
-            background-color: rgb(212, 202, 192);
-            margin: 20px;
-            padding: 20px;
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            border-radius: 10px;
-        }
-        .card h2 {
-            color: #181818;
+            background-color: #3700b3;
         }
         footer {
-            background-color: #333;
-            color: white;
+            background-color: #1e1e1e;
+            color: #e0e0e0;
             text-align: center;
-            padding: 10px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.3);
+        }
+        footer p {
+            margin: 0;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -76,6 +128,10 @@
 
     <header>
         <h1>Welcome to Our Computer Networks Project 1</h1>
+        <div class="header-buttons">
+            <a href="login.html"><button class="button">Login</button></a>
+            <a href="signup.html"><button class="button">Sign Up</button></a>
+        </div>
     </header>
 
     <nav>
