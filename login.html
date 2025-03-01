@@ -92,12 +92,13 @@
 <body>
     <div class="login-container">
         <h2>Login</h2>
-        <form>
+        <form id="loginForm" action="login.php" method="POST">
             <!-- CSRF Token (for security, should be generated server-side) -->
             <!-- <input type="hidden" name="csrf_token" value="your_csrf_token_here"> -->
+            <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response">
 
-            <input type="text" id="username" name="username" placeholder="Username" required>
-            <input type="password" id="password" name="password" placeholder="Password" required>
+            <input type="text" id="username" name="username" placeholder="Username" required="true">
+            <input type="password" id="password" name="password" placeholder="Password" required="true">
             <div class="g-recaptcha" data-sitekey="6LekueUqAAAAANL0X5dtRConj9ZCULzncfZT9-Ig"></div>
             <button type="submit">Login</button>
         </form>
@@ -109,6 +110,7 @@
         <a href="#" class="forgot-password">Forgot Password?</a>
     </div>
 
+    <!--
     <script>
         // Basic client-side validation (additional validation should be done server-side)
         document.getElementById('loginForm').addEventListener('submit', function(event) {
@@ -121,5 +123,6 @@
             }
         });
     </script>
+    -->
 </body>
 </html>
