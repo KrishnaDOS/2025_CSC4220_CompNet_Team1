@@ -15,7 +15,7 @@ const port = 3000;
 const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'webserver',
-    password: 'Archery7115*',
+    password: 'SECRET*',
     database: 'compnet2025',
     waitForConnections: true,
     connectionLimit: 10,
@@ -38,7 +38,7 @@ app.use(express.urlencoded({ extended: false }));
 // Upload route
 app.post('/upload', function(req, res) { 
     const params = new URLSearchParams({
-        secret: '6LekueUqAAAAAFVecPTZww05KmK3Ml6Tgqz3Y_vy',
+        secret: 'SECRET',
         response: req.body['g-recaptcha-response'],
         remoteip: req.ip,
     });
@@ -84,7 +84,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.use(session({
-    secret: 'yAJSKFHjkHFLkjashLAJSlKUAdclkajasudALSBAUAS', // Replace with a strong secret key
+    secret: 'SECRET', // Replace with a strong secret key
     resave: false,
     saveUninitialized: true,
     cookie: {
