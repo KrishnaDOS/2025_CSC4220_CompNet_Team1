@@ -33,7 +33,7 @@ DNS Configuration: Setting up the DNS records manually required careful attentio
 
 Node JS. HTTPS Configuration: Setting  up the node.js server to accept HTTPS traffic was a main sticking point in getting the Google Captcha set up correctly.
 
-Database Integration: Attaching our front end to the database took longer than expected due to the afformentioned Node JS. configuration issues, as such you may need to pardon our lack of full database integration for the time being.
+Database Integration: Attaching our front end to the database took longer than expected due to the aforementioned Node JS. configuration issues, as such you may need to pardon our lack of full database integration for the time being.
 
 # Future Improvements:
 
