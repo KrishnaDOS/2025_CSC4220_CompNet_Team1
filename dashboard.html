@@ -32,7 +32,7 @@
             display: flex;
             gap: 10px;
         }
-        .header-buttons .button {
+        .header-buttons .logoutButton {
             background-color: #6200ee;
             border: none;
             color: #ffffff;
@@ -45,7 +45,7 @@
             border-radius: 0; /* Square edges */
             transition: background-color 0.3s ease;
         }
-        .header-buttons .button:hover {
+        .header-buttons .logoutButton:hover {
             background-color: #3700b3;
         }
         nav {
@@ -129,8 +129,8 @@
     <header>
         <h1>Welcome to Our Computer Networks Project 1</h1>
         <div class="header-buttons">
-            <a href="login.html"><button class="button">Login</button></a>
-            <a href="signup.html"><button class="button">Sign Up</button></a>
+            <p id="welcomeMessage"></p>
+            <button class="logoutButton" id="logoutButton">Sign Out</button>
         </div>
     </header>
 
@@ -164,5 +164,39 @@
         <p>&copy; Computer Networks Project 1. Aditya, Aiden, Krishna</p>
     </footer>
 
+<script>
+    // Fetch user data from the server
+    fetch('https://www.compnet2025.com:3000/dashboard', {
+        credentials: 'include' // Include cookies (for session)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.message) {
+            document.getElementById('welcomeMessage').innerText = data.message;
+        } else {
+            console.log('Session removed from login:', data.message);
+            window.location.href = '/login.html'; // Redirect if not logged in
+        }
+    })
+    .catch(error => {
+        console.error('Error fetching dashboard data:', error);
+        window.location.href = '/login.html'; // Redirect if error
+    });
+
+    // Logout button
+    document.getElementById('logoutButton').addEventListener('click', async function() {
+        const response = await fetch('https://www.compnet2025.com:3000/logout', {
+            method: 'POST',
+            credentials: 'include' // Include cookies (for session)
+        });
+
+        const data = await response.json();
+        if (response.ok) {
+            window.location.href = '/login.html'; // Redirect to login page
+        } else {
+            console.error('Logout failed:', data.error);
+        }
+    });
+</script>
 </body>
 </html>

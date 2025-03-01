@@ -16,7 +16,7 @@ form.addEventListener('submit', (e) => {
         method: "POST",
         body: params,
         headers: {
-            'Content-Type': 'application/x-www-form-urlencoded', // Fix the typo here
+            'Content-Type': 'application/x-www-form-urlencoded', 
         }
     })
     .then(res => res.json())
