@@ -31,6 +31,10 @@ Mail Server Limitations: Due to AWS's restrictions on port 25 for free-tier inst
 
 DNS Configuration: Setting up the DNS records manually required careful attention to detail, especially for the mail server and reverse DNS (PTR) records.
 
+Node JS. HTTPS Configuration: Setting  up the node.js server to accept HTTPS traffic was a main sticking point in getting the Google Captcha set up correctly.
+
+Database Integration: Attaching our front end to the database took longer than expected due to the afformentioned Node JS. configuration issues, as such you may need to pardon our lack of full database integration for the time being.
+
 # Future Improvements:
 
 Email Functionality: Upgrade the AWS instance to enable outgoing email functionality.
