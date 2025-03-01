@@ -25,6 +25,7 @@ DNS Configuration: The DNS records are manually configured to point the domain c
 
 Security: The server uses HTTPS with custom SSL certificates, and the firewall is configured to block unauthorized access to the SSH port.
 
+
 # Challenges:
 
 Mail Server Limitations: Due to AWS's restrictions on port 25 for free-tier instances, the mail server cannot send outgoing emails. This limitation can be resolved by upgrading to a paid AWS plan.
@@ -38,8 +39,6 @@ Database Integration: Attaching our front end to the database took longer than e
 # Future Improvements:
 
 Email Functionality: Upgrade the AWS instance to enable outgoing email functionality.
-
-User Authentication: Implement a full user authentication system with database integration for storing user credentials securely.
 
 Enhanced Security: Add additional security measures such as rate limiting, IP whitelisting, and more robust CSRF protection.
 
