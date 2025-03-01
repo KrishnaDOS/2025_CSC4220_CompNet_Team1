@@ -87,4 +87,14 @@ refresh:	7200
 retry:	900
 expire:	1209600
 minimum ttl:	86400
+
+DNS records
+name	class	type	data	time to live
+www.compnet2025.com	IN	A	44.202.251.70	3600s
+compnet2025.com	IN	MX	preference: 0, exchange: mail.compnet2025.com	3600s
+compnet2025.com	IN	NS	ns1061.ui-dns.de	86400s
+compnet2025.com	IN	NS	ns1110.ui-dns.com	86400s
+compnet2025.com	IN	NS	ns1027.ui-dns.biz	86400s
+compnet2025.com	IN	NS	ns1089.ui-dns.org	86400s
+
 ```
