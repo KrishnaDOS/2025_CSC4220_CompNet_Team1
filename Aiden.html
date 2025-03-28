@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aiden blanchard - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+<header>
+    <h1>Aiden blanchard</h1>
+    <p>Computer Science Student @ Georgia State University</p>
+    <div id="welcomeMessage" class="header-buttons">
+    </div>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+</nav>
+
+<main>
+    <section id="about">
+        <h2>About Me</h2>
+        <p></p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <p><strong>Cyber Security Analyst | Atlanta, GA</strong></p>
+        <p>Southern Poverty Law Center · Full-time | Jun 2024 - Present</p>
+        <p>Aiden Blanchard is a Cybersecurity Analyst with a strong foundation in protecting digital systems and mitigating risks. Starting as an intern at the Southern Poverty Law Center (SPLC), Aiden quickly rose to the role of Cybersecurity Analyst, where he gained hands-on experience with industry-leading tools and techniques. His work at SPLC allowed him to deepen his knowledge of threat analysis, incident response, and risk management while demonstrating his passion for learning and innovation in cybersecurity.<br></p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Home IOT Vulnerability Scanner, & VPN Server: </strong> Developed a user friendly IOT Vulnerability Scanner and threat notification system to identify misconfigurations in the user's WLAN and recommend fixes as well as send out threat landscape reports. Utilized networking tools Burpsuite and nmap to craft custom .json requests for handling Nessus output files. The project utilized Nessus Vulnerability scanner, Wireguard VPN, Shodan, and Python to create a fully configurable system as well as creating an in-depth tutorial to allow for non-tech-literate users to successfully implement it on their own network.</li>
+            <br>
+            <li><strong>Track It — Package Tracking Web Application: </strong> Worked as project coordinator and developer in a team of 6 to deploy a custom parcel tracking system and web server that allows for universal compatibility with various online shops and shipping companies such as Amazon, Etsy, USPS etc. The system utilized APIs from various shipping services to display real-time tracking information as well as using Python SMTP to send package updates to users. User account information was stored on a MySQL database which allowed for simultaneous tracking of multiple packages.</li>
+            <br>
+            <li><strong>Custom DNS Server for Content Moderation & Ad Blocking: </strong> Set up a home DNS Server utilizing a Raspberry Pi to allow for content moderation for home network traffic, and Ad/Malware blocking. Utilized unbound to direct unknown DNS request to Top Level Domain servers instead of routing through ISP’s DNS resolvers, increasing privacy. DNS server allows for domain blocking which prevents connections to malicious sites as well as ensuring advertising domains are unable to be resolved.</li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <p>Bachelor of Arts & Science in Computer Science - <strong>Georgia State University</strong>, May 2025</p>
+        <p>Certification of Cybersecurity – <strong>Georgia State University</strong>, May 2025</p><br>
+    </section>
+</main>
+
+<footer>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: aidenjblanchard@protonmail.com</p>
+        <p>Phone: (404)-441-3464</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/aiden-blanchard" target="_blank">linkedin.com/in/aiden-blanchard</a></p>
+    </section>
+</footer>
+<script>
+    // Function to check login status and update the UI
+    async function checkLoginStatus() {
+        try {
+            const response = await fetch('https://www.compnet2025.com:3000/dashboard', {
+                credentials: 'include' // Include cookies (for session)
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.message) {
+                // User is logged in
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.innerHTML = `
+                    <p>${data.message}</p>
+                    <button class="button" id="logoutButton">Logout</button>
+                `;
+
+                // Add event listener for logout button
+                document.getElementById('logoutButton').addEventListener('click', async function() {
+                    const logoutResponse = await fetch('https://www.compnet2025.com:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include' // Include cookies (for session)
+                    });
+
+                    if (logoutResponse.ok) {
+                        window.location.href = '/'; // Redirect to index page after logout
+                    } else {
+                        console.error('Logout failed');
+                    }
+                });
+            } else {
+                // User is not logged in
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.innerHTML = `
+                    <a href="login"><button class="button">Login</button></a>
+                    <a href="signup"><button class="button">Sign Up</button></a>
+                `;
+            }
+        } catch (error) {
+            console.error('Error checking login status:', error);
+            // Fallback to showing login/signup buttons if there's an error
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.innerHTML = `
+                <a href="login"><button class="button">Login</button></a>
+                <a href="signup"><button class="button">Sign Up</button></a>
+            `;
+        }
+    }
+
+    // Call the function to check login status when the page loads
+    checkLoginStatus();
+</script>
+</body>
+</html>

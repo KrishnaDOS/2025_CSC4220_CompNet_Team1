@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avyuktkrishna Ramasamy - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    
+<header>
+    <h1>Avyuktkrishna Ramasamy</h1>
+    <p>Dual Degree Computer Science Student @ Georgia State University</p>
+    <div id="welcomeMessage" class="header-buttons">
+    </div>
+</header>
+
+<nav>
+    <a href="/">Home</a>
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+</nav>
+
+<main>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>
+            Krishna Ramasamy is currently a senior at Georgia State University majoring in Computer Science. He has completed numerous courses and certifications in the ever-evolving field of Computer Science that enable him to design, develop, test, and deploy efficient software solutions to business problems.<br><br>
+
+            His experience includes utilizing web and mobile application technologies and frameworks to create and host business solutions. Some of his projects include implementing a UI/UX frontend for a concept e-commerce corporation; developing an end-to-end functional mobile application for Android users; and creating a standalone desktop application in relation to payroll processing, data storage/retrieval, and data manipulation; among others.<br><br>
+
+            Krishna is conversant with several programming languages, such as Java, C, JavaScript, and Python. He is experienced with utilizing JSP (Java ServerPages), Jakarta Servlets for JDBC (Java Database Connectivity), Spring Core, MySQL Server/Workbench, Apache Tomcat, and more.<br><br>
+        </p>
+    </section>
+
+    <section id="experience">
+        <h2>Experience</h2>
+        <ul>
+            <li>Undergraduate Teaching Assistant @ GSU - Responsible for tutoring students through weekly office hours</li>
+            <li>Southeast US Regional Leader @ AInspire.org - conducted webinars on current research in AI</li>
+        </ul>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li><strong>Budget Planner:</strong> Worked in a 3-person team to create an Android mobile app for managing monthly budgeting, recurring payments/income, tracking expenses, and generating comprehensive report each month</li>
+            <li><strong>ParkGSU:</strong> Worked in a 5-person team to develop a cross-platform Flutter mobile app to manage parking spot reservations across GSU's multiple parking decks around campus</li>
+            <li><strong>Multithreaded Proxy Server & Client:</strong> Worked in a 5-person team to create a proxy server able to download HTML content from any given website (using multithreading) and render it to a client upon request.</li>
+            <li><strong>Concept e-Commerce Website:</strong> Built a website from scratch for a concept e-commerce agricultural corporation which markets and sells agricultural tools & equipment online</li>
+            <li><strong>Coupon & Product Web App:</strong> Created a coupon management system to tie coupons to various products, facilitating discount mechanisms through dollar/percentage values w/ effective date ranges</li>
+        </ul>
+    </section>
+
+    <section id="education">
+        <h2>Education</h2>
+        <dl>
+            <dt><strong>Georgia State University</strong></dl>
+            <dd>Year: 4th (Senior)</dd>
+            <dd>Major: Computer Science</dd>
+            <dd>Program: Dual Degree (B.S./M.S.)</dd>
+            <dd>Expected Graduation Date: Fall 2025</dd>
+            <dt>Applicable Coursework:</dt>
+            <dd><ul>
+                <li>MATH 3020 Applied Probability & Statistics for Computer Science</li>
+                <li>CSC 4311 Cloud Computing</li>
+                <li>CSC 4220 Computer Networks</li>
+                <li>CSC 3210 Computer Organization & Programming</li>
+                <li>CSC 4520 Design & Analysis of Algorithms</li>
+                <li>CSC 6222 Fundamentals of Cybersecurity</li>
+                <li>MATH 2641 Linear Algebra I</li>
+                <li>CSC 4360 Mobile Application Development</li>
+                <li>CSC 6221 Mobile Computing & Wireless Network Security</li>
+                <li>CSC 4320 Operating Systems</li>
+                <li>CSC 4330 Programming Language Concepts</li>
+                <li>CSC 4228 Security in IoT</li>
+                <li>CSC 4350 Software Engineering CTW</li>
+                <li>CSC 3320 System-Level Programming</li>
+                <li>CSC 6370 Web Programming</li>
+            </ul></dd>
+        </dl>
+        <dl>
+            <p><strong>Georgia State University Perimeter College</strong></p>
+            <dd>Year: Completed</dd>
+            <dd>Major: Computer Science</dd>
+            <dd>Program: Undergraduate Associate (A.S.)</dd>
+            <dd>Graduation Date: Summer 2023</dd>
+            <dt>Applicable Coursework:</dt>
+            <dd><ul>
+                <li>MATH 2211 Calculus of One Variable I</li>
+                <li>MATH 2212 Calculus of One Variable II</li>
+                <li>CSc 2720 Data Structures</li>
+                <li>CSC 1301 Principles of Computer Science I</li>
+                <li>CSC 1302 Principles of Computer Science II</li>
+                <li>CSC 2510 Thoretical Foundations of Computer Science</li>
+            </ul></dd>
+        </dl>        
+    </section>
+</main>
+
+<footer>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: aramasamy2@student.gsu.edu</p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/avyuktkrishna/" target="_blank">linkedin.com/in/avyuktkrishna</a></p>
+    </section>
+</footer>
+
+<script>
+    // Function to check login status and update the UI
+    async function checkLoginStatus() {
+        try {
+            const response = await fetch('https://www.compnet2025.com:3000/dashboard', {
+                credentials: 'include' // Include cookies (for session)
+            });
+
+            const data = await response.json();
+
+            if (response.ok && data.message) {
+                // User is logged in
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.innerHTML = `
+                    <p>${data.message}</p>
+                    <button class="button" id="logoutButton">Logout</button>
+                `;
+
+                // Add event listener for logout button
+                document.getElementById('logoutButton').addEventListener('click', async function() {
+                    const logoutResponse = await fetch('https://www.compnet2025.com:3000/logout', {
+                        method: 'POST',
+                        credentials: 'include' // Include cookies (for session)
+                    });
+
+                    if (logoutResponse.ok) {
+                        window.location.href = '/'; // Redirect to index page after logout
+                    } else {
+                        console.error('Logout failed');
+                    }
+                });
+            } else {
+                // User is not logged in
+                const welcomeMessage = document.getElementById('welcomeMessage');
+                welcomeMessage.innerHTML = `
+                    <a href="login"><button class="button">Login</button></a>
+                    <a href="signup"><button class="button">Sign Up</button></a>
+                `;
+            }
+        } catch (error) {
+            console.error('Error checking login status:', error);
+            // Fallback to showing login/signup buttons if there's an error
+            const welcomeMessage = document.getElementById('welcomeMessage');
+            welcomeMessage.innerHTML = `
+                <a href="login"><button class="button">Login</button></a>
+                <a href="signup"><button class="button">Sign Up</button></a>
+            `;
+        }
+    }
+
+    // Call the function to check login status when the page loads
+    checkLoginStatus();
+</script>
+</body>
+</html>
