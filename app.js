@@ -7,15 +7,19 @@ import https from 'https';
 import fs from 'fs';
 import mysql from 'mysql2/promise';
 import bcrypt from 'bcryptjs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
 
 const app = express();
 const port = 3000;
-
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const pool = mysql.createPool({
     host: '127.0.0.1',
     user: 'webserver',
-    password: 'SECRET*',
+    password: 'Archery7115*',
     database: 'compnet2025',
     waitForConnections: true,
     connectionLimit: 10,
@@ -91,6 +95,7 @@ app.use(session({
         secure: true, // Set to true if using HTTPS
         httpOnly: true, // Prevent client-side JavaScript from accessing the cookie
         maxAge: 1000 * 60 * 60 * 24, // Session duration (e.g., 1 day)
+        sameSite: 'strict',
     }
 }));
 
@@ -127,9 +132,11 @@ function isLoggedIn(req, res, next) {
     if (req.session.userId) {
         next(); // User is logged in, proceed to the next middleware/route
     } else {
-        res.status(401).json({ error: 'Unauthorized: Please log in' });
+        return res.redirect('www.compnet2025.com/login'); 
     }
 }
+
+
 
 app.get('/dashboard', isLoggedIn, (req, res) => {
     // Fetch user-specific data from the database
@@ -148,6 +155,20 @@ app.post('/logout', (req, res) => {
             return res.status(500).json({ error: 'Internal Server Error' });
         }
         res.json({ message: 'Logout successful' });
+    });
+});
+
+// Route to serve secret.html only to logged-in users
+app.get('/secretFunct', isLoggedIn, (req, res) => {
+    const filePath = path.join(__dirname, '..', 'private', 'secret.html');
+    console.log('Attempting to read file at:', filePath);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading secret.html:', err);
+            return res.status(500).send('Internal Server Error');
+        }
+        res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private');
+        res.send(data);
     });
 });
 
